@@ -20,4 +20,18 @@ Medicine.getAllMedicines = function(result) {
   });
 };
 
+Medicine.getMedicineById = function(medicineId, result) {
+  sql.query("Select * from medicines where id = ? ", medicineId, function(
+    err,
+    res
+  ) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      result(null, res);
+    }
+  });
+};
+
 module.exports = Medicine;

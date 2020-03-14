@@ -4,4 +4,6 @@ module.exports = function(app) {
 
   // medicines Routes
   app.route("/medicines").get(medicines.getAllMedicines);
+
+  app.route("/medicines/:medicineId").get(medicines.getMedicineById);
 };
