@@ -34,4 +34,19 @@ Medicine.getMedicineById = function(medicineId, result) {
   });
 };
 
+Medicine.getAllByActiveSubstance = function(activeSubstance, result) {
+  sql.query(
+    "Select * from medicines where substancja_czynna = ? order by cena_detaliczna ASC",
+    activeSubstance,
+    function(err, res) {
+      if (err) {
+        console.log("error", err);
+        result(err, null);
+      } else {
+        result(null, res);
+      }
+    }
+  );
+};
+
 module.exports = Medicine;

@@ -17,3 +17,14 @@ exports.getMedicineById = function(req, res) {
     res.json(medicine);
   });
 };
+
+exports.getAllByActiveSubstance = function(req, res) {
+  Medicine.getAllByActiveSubstance(req.params.activeSubstance, function(
+    err,
+    medicine
+  ) {
+    if (err) res.send(err);
+    console.log(res.medicine);
+    res.json(medicine);
+  });
+};
