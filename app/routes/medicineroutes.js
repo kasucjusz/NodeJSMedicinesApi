@@ -8,6 +8,6 @@ module.exports = function(app) {
   app.route("/medicines/:medicineId").get(medicines.getMedicineById);
 
   app
-    .route("/medicines/activeSubstance/:activeSubstance")
+    .route("/medicines/activeSubstance/:activeSubstance/:medicineId")
     .get(medicines.getAllByActiveSubstance);
 };

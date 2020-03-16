@@ -34,10 +34,14 @@ Medicine.getMedicineById = function(medicineId, result) {
   });
 };
 
-Medicine.getAllByActiveSubstance = function(activeSubstance, result) {
+Medicine.getAllByActiveSubstance = function(
+  activeSubstance,
+  medicineId,
+  result
+) {
   sql.query(
-    "Select * from medicines where substancja_czynna = ? order by cena_detaliczna ASC",
-    activeSubstance,
+    "Select * from medicines where substancja_czynna = ? and id != ? order by cena_detaliczna ASC",
+    [activeSubstance, medicineId],
     function(err, res) {
       if (err) {
         console.log("error", err);

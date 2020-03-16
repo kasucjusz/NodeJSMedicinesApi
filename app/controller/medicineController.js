@@ -19,12 +19,13 @@ exports.getMedicineById = function(req, res) {
 };
 
 exports.getAllByActiveSubstance = function(req, res) {
-  Medicine.getAllByActiveSubstance(req.params.activeSubstance, function(
-    err,
-    medicine
-  ) {
-    if (err) res.send(err);
-    console.log(res.medicine);
-    res.json(medicine);
-  });
+  Medicine.getAllByActiveSubstance(
+    req.params.activeSubstance,
+    req.params.medicineId,
+    function(err, medicine) {
+      if (err) res.send(err);
+      console.log(res.medicine);
+      res.json(medicine);
+    }
+  );
 };
